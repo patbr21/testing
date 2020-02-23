@@ -9,9 +9,9 @@ library(dplyr)
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
     Liste_Files = list.files(pattern="*.csv");
-    Liste_benutz = lapply(lista_tot1, read.csv, sep = ",")  
-    Daten_bind <-do.call("rbind", lista_tot2)
-    Daten_auswahl <-lista_tot3[is.element(lista_tot3$ID, id),]
+    Liste_benutz = lapply(Liste_Files, read.csv, sep = ",")  
+    Daten_bind <-do.call("rbind", Liste_benutz)
+    Daten_auswahl <-Daten_bind[is.element(Daten_bind$ID, id),]
     Mittelwert<-mean(Daten_auswahl[[pollutant]], na.rm=TRUE)
     return(Mittelwert)
     
