@@ -8,6 +8,7 @@ library(dplyr)
 #directory specified in the 'directory' argument and returns the mean of the pollutant across all of the monitors, ignoring any missing values coded as NA. 
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
+    setwd(directory)
     Liste_Files = list.files(pattern="*.csv");
     Liste_benutz = lapply(Liste_Files, read.csv, sep = ",")  
     Daten_bind <-do.call("rbind", Liste_benutz)
@@ -16,3 +17,4 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     return(Mittelwert)
     
 }
+
